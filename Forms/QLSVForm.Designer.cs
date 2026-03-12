@@ -176,9 +176,8 @@
             this.cbGioiTinh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(249)))), ((int)(((byte)(250)))));
             this.cbGioiTinh.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbGioiTinh.Items.AddRange(new object[] {
-            "Male",
-            "Female",
-            "Other"});
+            "Nam",       
+            "Nữ"});
             this.cbGioiTinh.Location = new System.Drawing.Point(18, 195);
             this.cbGioiTinh.Name = "cbGioiTinh";
             this.cbGioiTinh.Size = new System.Drawing.Size(226, 25);
