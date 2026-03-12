@@ -20,23 +20,25 @@ namespace Windows_Forms.Forms
 
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
-                MessageBox.Show("Please enter username and password.");
+                MessageBox.Show("Vui lòng điền Username và Password");
                 return;
             }
 
             DatabaseDataContext db = new DatabaseDataContext();
 
-            var user = db.Users
-                         .FirstOrDefault(u => u.Username == username
-                                           && u.Password == password);
+            var user = db.Users.FirstOrDefault(u => u.Username == username
+                                               && u.Password == password);
 
             if (user != null)
             {
-                MessageBox.Show("Login successful! Welcome " + user.Username);
+                MessageBox.Show("Đăng nhập thành công! Welcome " + user.Username);
+                QLSVForm form = new QLSVForm();
+                form.Show();
+                this.Hide();
             }
             else
             {
-                MessageBox.Show("Invalid username or password.");
+                MessageBox.Show("Sai Username hoặc Password");
             }
         }
 
