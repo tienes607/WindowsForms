@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvSinhVien = new System.Windows.Forms.DataGridView();
             this.pnlLeft = new System.Windows.Forms.Panel();
             this.lblTitle = new System.Windows.Forms.Label();
@@ -46,6 +46,8 @@
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnLamMoi = new System.Windows.Forms.Button();
             this.pnlRight = new System.Windows.Forms.Panel();
+            this.pnlSearch = new System.Windows.Forms.Panel();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.pnlSidebar = new System.Windows.Forms.Panel();
             this.lblAppName = new System.Windows.Forms.Label();
             this.btnNavSinhVien = new System.Windows.Forms.Button();
@@ -54,6 +56,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvSinhVien)).BeginInit();
             this.pnlLeft.SuspendLayout();
             this.pnlRight.SuspendLayout();
+            this.pnlSearch.SuspendLayout();
             this.pnlSidebar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,34 +64,35 @@
             // 
             this.dgvSinhVien.AllowUserToAddRows = false;
             this.dgvSinhVien.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(244)))), ((int)(((byte)(253)))));
-            this.dgvSinhVien.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(244)))), ((int)(((byte)(253)))));
+            this.dgvSinhVien.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvSinhVien.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvSinhVien.BackgroundColor = System.Drawing.Color.White;
             this.dgvSinhVien.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvSinhVien.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(136)))), ((int)(((byte)(229)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSinhVien.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(136)))), ((int)(((byte)(229)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9.5F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSinhVien.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvSinhVien.ColumnHeadersHeight = 38;
             this.dgvSinhVien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvSinhVien.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvSinhVien.EnableHeadersVisualStyles = false;
             this.dgvSinhVien.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.dgvSinhVien.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.dgvSinhVien.Location = new System.Drawing.Point(12, 12);
+            this.dgvSinhVien.Location = new System.Drawing.Point(12, 58);
             this.dgvSinhVien.Name = "dgvSinhVien";
             this.dgvSinhVien.ReadOnly = true;
             this.dgvSinhVien.RowHeadersVisible = false;
             this.dgvSinhVien.RowTemplate.Height = 32;
             this.dgvSinhVien.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSinhVien.Size = new System.Drawing.Size(740, 557);
+            this.dgvSinhVien.Size = new System.Drawing.Size(740, 511);
             this.dgvSinhVien.TabIndex = 0;
+            this.dgvSinhVien.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSinhVien_CellClick);
             // 
             // pnlLeft
             // 
@@ -176,7 +180,7 @@
             this.cbGioiTinh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(249)))), ((int)(((byte)(250)))));
             this.cbGioiTinh.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbGioiTinh.Items.AddRange(new object[] {
-            "Nam",       
+            "Nam",
             "Nữ"});
             this.cbGioiTinh.Location = new System.Drawing.Point(18, 195);
             this.cbGioiTinh.Name = "cbGioiTinh";
@@ -214,8 +218,9 @@
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(226, 36);
             this.btnThem.TabIndex = 9;
-            this.btnThem.Text = "➕  Thêm";
+            this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = false;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // btnSua
             // 
@@ -229,8 +234,9 @@
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(226, 36);
             this.btnSua.TabIndex = 10;
-            this.btnSua.Text = "✏️  Sửa";
+            this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = false;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnXoa
             // 
@@ -244,8 +250,9 @@
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(226, 36);
             this.btnXoa.TabIndex = 11;
-            this.btnXoa.Text = "🗑️  Xóa";
+            this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = false;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnLamMoi
             // 
@@ -259,19 +266,43 @@
             this.btnLamMoi.Name = "btnLamMoi";
             this.btnLamMoi.Size = new System.Drawing.Size(226, 36);
             this.btnLamMoi.TabIndex = 12;
-            this.btnLamMoi.Text = "🔄  Làm mới";
+            this.btnLamMoi.Text = "Làm mới";
             this.btnLamMoi.UseVisualStyleBackColor = false;
+            this.btnLamMoi.Click += new System.EventHandler(this.btnLamMoi_Click);
             // 
             // pnlRight
             // 
             this.pnlRight.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(242)))), ((int)(((byte)(245)))));
             this.pnlRight.Controls.Add(this.dgvSinhVien);
+            this.pnlRight.Controls.Add(this.pnlSearch);
             this.pnlRight.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlRight.Location = new System.Drawing.Point(470, 0);
             this.pnlRight.Name = "pnlRight";
             this.pnlRight.Padding = new System.Windows.Forms.Padding(12);
             this.pnlRight.Size = new System.Drawing.Size(764, 581);
             this.pnlRight.TabIndex = 0;
+            // 
+            // pnlSearch
+            // 
+            this.pnlSearch.BackColor = System.Drawing.Color.White;
+            this.pnlSearch.Controls.Add(this.txtSearch);
+            this.pnlSearch.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlSearch.Location = new System.Drawing.Point(12, 12);
+            this.pnlSearch.Name = "pnlSearch";
+            this.pnlSearch.Padding = new System.Windows.Forms.Padding(8);
+            this.pnlSearch.Size = new System.Drawing.Size(740, 46);
+            this.pnlSearch.TabIndex = 1;
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(242)))), ((int)(((byte)(245)))));
+            this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtSearch.Location = new System.Drawing.Point(34, 10);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(380, 25);
+            this.txtSearch.TabIndex = 1;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // pnlSidebar
             // 
@@ -294,7 +325,7 @@
             this.lblAppName.Name = "lblAppName";
             this.lblAppName.Size = new System.Drawing.Size(200, 40);
             this.lblAppName.TabIndex = 0;
-            this.lblAppName.Text = "📚  QUẢN LÝ";
+            this.lblAppName.Text = "QUẢN LÝ";
             this.lblAppName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnNavSinhVien
@@ -310,9 +341,10 @@
             this.btnNavSinhVien.Padding = new System.Windows.Forms.Padding(18, 0, 0, 0);
             this.btnNavSinhVien.Size = new System.Drawing.Size(200, 46);
             this.btnNavSinhVien.TabIndex = 1;
-            this.btnNavSinhVien.Text = "👤  Sinh Viên";
+            this.btnNavSinhVien.Text = "Sinh Viên";
             this.btnNavSinhVien.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnNavSinhVien.UseVisualStyleBackColor = false;
+            this.btnNavSinhVien.Click += new System.EventHandler(this.btnNavSinhVien_Click);
             // 
             // btnNavLop
             // 
@@ -328,7 +360,7 @@
             this.btnNavLop.Padding = new System.Windows.Forms.Padding(18, 0, 0, 0);
             this.btnNavLop.Size = new System.Drawing.Size(200, 46);
             this.btnNavLop.TabIndex = 2;
-            this.btnNavLop.Text = "🏫  Lớp Học";
+            this.btnNavLop.Text = "Lớp Học";
             this.btnNavLop.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnNavLop.UseVisualStyleBackColor = false;
             this.btnNavLop.Click += new System.EventHandler(this.btnNavLop_Click);
@@ -343,14 +375,15 @@
             this.btnDangXuat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDangXuat.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnDangXuat.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
-            this.btnDangXuat.Location = new System.Drawing.Point(0, 1016);
+            this.btnDangXuat.Location = new System.Drawing.Point(0, 535);
             this.btnDangXuat.Name = "btnDangXuat";
             this.btnDangXuat.Padding = new System.Windows.Forms.Padding(18, 0, 0, 0);
             this.btnDangXuat.Size = new System.Drawing.Size(200, 46);
             this.btnDangXuat.TabIndex = 3;
-            this.btnDangXuat.Text = "🚪  Đăng Xuất";
+            this.btnDangXuat.Text = "Đăng Xuất";
             this.btnDangXuat.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDangXuat.UseVisualStyleBackColor = false;
+            this.btnDangXuat.Click += new System.EventHandler(this.btnDangXuat_Click);
             // 
             // QLSVForm
             // 
@@ -368,14 +401,18 @@
             this.pnlLeft.ResumeLayout(false);
             this.pnlLeft.PerformLayout();
             this.pnlRight.ResumeLayout(false);
+            this.pnlSearch.ResumeLayout(false);
+            this.pnlSearch.PerformLayout();
             this.pnlSidebar.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
         private System.Windows.Forms.Panel pnlLeft;
         private System.Windows.Forms.Panel pnlRight;
+        private System.Windows.Forms.Panel pnlSearch;
         private System.Windows.Forms.Panel pnlSidebar;
         private System.Windows.Forms.DataGridView dgvSinhVien;
         private System.Windows.Forms.Label lblTitle;
@@ -391,6 +428,7 @@
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnLamMoi;
+        private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label lblAppName;
         private System.Windows.Forms.Button btnNavSinhVien;
         private System.Windows.Forms.Button btnNavLop;
