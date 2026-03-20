@@ -87,6 +87,43 @@
             this.dgvLop.Size = new System.Drawing.Size(740, 511);
             this.dgvLop.TabIndex = 0;
             this.dgvLop.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLop_CellClick);
+            this.pnlPaging = new System.Windows.Forms.Panel();
+            this.btnPrev = new System.Windows.Forms.Button();
+            this.btnNext = new System.Windows.Forms.Button();
+            this.lblPage = new System.Windows.Forms.Label();
+            //
+            // panel paging
+            //
+            this.pnlPaging.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlPaging.Height = 50;
+            this.pnlPaging.BackColor = System.Drawing.Color.White;
+            //
+            // btnPrev
+            //
+            this.btnPrev.Text = "<<";
+            this.btnPrev.Width = 60;
+            this.btnPrev.Location = new System.Drawing.Point(200, 10);
+            this.btnPrev.Click += new System.EventHandler(this.btnPrev_Click);
+            //
+            // btnNext
+            //
+            this.btnNext.Text = ">>";
+            this.btnNext.Width = 60;
+            this.btnNext.Location = new System.Drawing.Point(400, 10);
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            //
+            // lblPage
+            //
+            this.lblPage.AutoSize = true;
+            this.lblPage.Location = new System.Drawing.Point(300, 15);
+            this.lblPage.Text = "Page 1/1";
+            //
+            // add
+            //
+            this.pnlPaging.Controls.Add(this.btnPrev);
+            this.pnlPaging.Controls.Add(this.lblPage);
+            this.pnlPaging.Controls.Add(this.btnNext);
+            this.pnlRight.Controls.Add(this.pnlPaging);
             // 
             // pnlLeft
             // 
@@ -356,5 +393,9 @@
         private System.Windows.Forms.Button btnNavSinhVien;
         private System.Windows.Forms.Button btnNavLop;
         private System.Windows.Forms.Button btnDangXuat;
+        private System.Windows.Forms.Panel pnlPaging;
+        private System.Windows.Forms.Button btnPrev;
+        private System.Windows.Forms.Button btnNext;
+        private System.Windows.Forms.Label lblPage;
     }
 }

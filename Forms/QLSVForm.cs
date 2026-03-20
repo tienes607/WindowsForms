@@ -8,6 +8,72 @@ namespace Windows_Forms.Forms
     public partial class QLSVForm : Form
     {
         private DatabaseDataContext db = new DatabaseDataContext();
+
+        int currentPage = 1;
+        int pageSize = 5;
+        int totalPage = 0;
+
+        void LoadData()
+        {
+            DatabaseDataContext db = new DatabaseDataContext();
+
+            var query = db.SinhViens.AsQueryable();
+
+            if (!string.IsNullOrEmpty(txtSearch.Text))
+            {
+                string keyword = txtSearch.Text.Trim();
+                query = query.Where(sv => sv.TenSV.Contains(keyword));
+            }
+
+            int totalRecord = query.Count();
+
+            totalPage = (int)Math.Ceiling((double)totalRecord / pageSize);
+
+            var data = query
+                .Skip((currentPage - 1) * pageSize)
+                .Take(pageSize)
+                .Select(sv => new
+                {
+                    sv.MSSV,
+                    sv.TenSV,
+                    sv.NgaySinh,
+                    sv.GioiTinh,
+                    TenLop = sv.Lop.TenLop
+                })
+                .ToList();
+
+            dgvSinhVien.DataSource = data;
+
+            lblPage.Text = $"Page {currentPage}/{totalPage}";
+
+            btnPrev.Enabled = currentPage > 1;
+            btnNext.Enabled = currentPage < totalPage;
+        }
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            if (currentPage < totalPage)
+            {
+                currentPage++;
+                LoadData();
+            }
+        }
+        private void btnPrev_Click(object sender, EventArgs e)
+        {
+            if (currentPage > 1)
+            {
+                currentPage--;
+                LoadData();
+            }
+        }
+        private void QLSVForm_Load(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            currentPage = 1;
+            LoadData();
+        }
         public QLSVForm()
         {
             InitializeComponent();
@@ -151,11 +217,6 @@ namespace Windows_Forms.Forms
             LoadSinhVien();
         }
 
-        private void txtSearch_TextChanged(object sender, EventArgs e)
-        {
-            LoadSinhVien(txtSearch.Text.Trim());
-        }
-
         private void dgvSinhVien_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
@@ -203,7 +264,6 @@ namespace Windows_Forms.Forms
                 Application.Exit();
             }
         }
-
         private void ClearForm()
         {
             txtTenSV.Text = "";

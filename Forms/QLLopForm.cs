@@ -13,6 +13,49 @@ namespace Windows_Forms.Forms
             InitializeComponent();
             LoadLop();
         }
+
+        int currentPage = 1;
+        int pageSize = 5;
+        int totalPage = 0;
+        void LoadData()
+        {
+            DatabaseDataContext db = new DatabaseDataContext();
+
+            var query = db.Lops.AsQueryable();
+
+            int totalRecord = query.Count();
+
+            totalPage = (int)Math.Ceiling((double)totalRecord / pageSize);
+
+            var data = query
+                .Skip((currentPage - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+
+            dgvLop.DataSource = data;
+
+            lblPage.Text = $"Page {currentPage}/{totalPage}";
+        }
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            if (currentPage < totalPage)
+            {
+                currentPage++;
+                LoadData();
+            }
+        }
+        private void btnPrev_Click(object sender, EventArgs e)
+        {
+            if (currentPage > 1)
+            {
+                currentPage--;
+                LoadData();
+            }
+        }
+        private void QLLopForm_Load(object sender, EventArgs e)
+        {
+            LoadData();
+        }
         private void LoadLop(string keyword = "")
         {
             var lops = db.Lops.ToList();
