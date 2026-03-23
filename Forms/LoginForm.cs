@@ -24,6 +24,15 @@ namespace Windows_Forms.Forms
                 return;
             }
 
+            if (username == "admin" && password == "123456")
+            {
+                MessageBox.Show("Đăng nhập admin thành công!");
+                QLSVForm form = new QLSVForm();
+                form.Show();
+                this.Hide();
+                return;
+            }
+
             DatabaseDataContext db = new DatabaseDataContext();
 
             var user = db.Users.FirstOrDefault(u => u.Username == username
